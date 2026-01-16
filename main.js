@@ -1,8 +1,8 @@
-const playerx = document.querySelector(".xplayer");
-const playero = document.querySelector(".oplayer");
+const playerx = document.querySelector("#xplayer");
+const playero = document.querySelector("#oplayer");
 const cell = document.querySelectorAll(".cell");
-const title = document.querySelector("#title");
-
+const htitel = document.querySelector(".picking");
+const restart = document.querySelector(".restart");
 let player = "X";
 let pause = false;
 const boardgame = ["", "", "", "", "", "", "", "", ""];
@@ -13,9 +13,9 @@ const winbox = [
   [6, 7,8],
   [0, 3, 6],
   [1, 4, 7],
-  [2, 7, 8],
-  [0, 4, 7],
-  [2, 3, 6],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ];
 
 function changeplayer() {
@@ -23,7 +23,7 @@ function changeplayer() {
 }
 
 function draw() {
-  title.textContent = "Draw!";
+  htitel.textContent = "Draw!";
   pause = true;
 }
 
@@ -47,7 +47,7 @@ function checkwinner() {
 }
 
 function winneris(winner) {
-  title.textContent = `${player} Wins!`;
+  htitel.textContent = `${player} Wins!`;
   pause = true;
 
   winner.forEach((index) => {
@@ -66,4 +66,17 @@ cell.forEach((element, index) => {
       }
     }
   });
+});
+restart.addEventListener("click", function() {
+  boardgame.fill('');
+  
+  cell.forEach(c => {
+    c.textContent = '';
+    c.classList.remove('x', 'o');
+    c.style.backgroundColor = '';
+  });
+  
+  pause = false;
+  player = 'X';
+  htitel.textContent = "Choose"; 
 });
