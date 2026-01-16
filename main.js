@@ -80,3 +80,21 @@ restart.addEventListener("click", function() {
   player = 'X';
   htitel.textContent = "Choose"; 
 });
+
+playerx.addEventListener("click", () => {
+  if (!pause) {
+    player = "X";
+    playerx.classList.add("active");
+    playero.classList.remove("active");
+  }
+});
+
+playero.addEventListener("click", () => {
+  if (!pause ) {
+    player = "O";
+    playero.classList.add("active");
+    playerx.classList.remove("active");
+  }
+});
+
+
