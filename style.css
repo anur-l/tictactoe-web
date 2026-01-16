@@ -1,8 +1,8 @@
-*{
- margin: 0rem;
-
+* {
+  margin: 0rem;
 }
-.box{
+
+.box {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -10,9 +10,40 @@
   height: 60vh;
 }
 
-.start{
+.start {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   width: 20vh;
+  margin-bottom: 2rem;
+}
+
+.player {
+  border: 1px solid black;
+  padding: 0.7rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+#xplayer {
+  color: red;
+}
+
+#oplayer {
+  color: blue;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3,3.5rem);
+  grid-template-rows: repeat(3,3.5rem);
+  gap:1rem;
+}
+.cell{
+ border: solid;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
