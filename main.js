@@ -1,8 +1,10 @@
 const playerx = document.querySelector("#xplayer");
 const playero = document.querySelector("#oplayer");
-const cell = document.querySelectorAll(".cell");
 const htitel = document.querySelector(".picking");
-const restart = document.querySelector(".restart");
+const theme = document.querySelector(".mode");
+const cell = document.querySelectorAll(".cell");
+const restart = document.querySelector(".restart")
+let modecol = false;
 let player = "X";
 let pause = false;
 const boardgame = ["", "", "", "", "", "", "", "", ""];
@@ -10,7 +12,7 @@ const boardgame = ["", "", "", "", "", "", "", "", ""];
 const winbox = [
   [0, 1, 2],
   [3, 4, 5],
-  [6, 7,8],
+  [6, 7, 8],
   [0, 3, 6],
   [1, 4, 7],
   [2, 5, 8],
@@ -68,17 +70,17 @@ cell.forEach((element, index) => {
   });
 });
 restart.addEventListener("click", function() {
-  boardgame.fill('');
-  
-  cell.forEach(c => {
-    c.textContent = '';
-    c.classList.remove('x', 'o');
-    c.style.backgroundColor = '';
+  boardgame.fill("");
+
+  cell.forEach((c) => {
+    c.textContent = "";
+    c.classList.remove("x", "o");
+    c.style.backgroundColor = "";
   });
-  
+
   pause = false;
-  player = 'X';
-  htitel.textContent = "Choose"; 
+  player = "X";
+  htitel.textContent = "Choose";
 });
 
 playerx.addEventListener("click", () => {
@@ -90,11 +92,49 @@ playerx.addEventListener("click", () => {
 });
 
 playero.addEventListener("click", () => {
-  if (!pause ) {
+  if (!pause) {
     player = "O";
     playero.classList.add("active");
     playerx.classList.remove("active");
   }
 });
 
+function dark() {  
+  document.body.style.background = "#1a202c";
+  document.body.style.color = "white";
+  document.querySelector(".box").style.background = "#2d3748";
+  document.querySelector("h1").style.color = "white";
+  document.querySelector(".picking").style.color = "#cbd5e0";
+  document.querySelector(".board").style.background = "transparent";
 
+  document.querySelectorAll(".cell").forEach((c) => {
+    c.style.background = "#4a5568";
+  });
+
+  theme.textContent = "Light"; 
+}
+
+function light() { 
+  document.body.style.background = "#e1faf1";
+  document.body.style.color = "#2d3748";
+  document.querySelector(".box").style.background = "white";
+  document.querySelector("h1").style.color = "#2d3748";
+  document.querySelector(".picking").style.color = "#333";
+  document.querySelector(".board").style.background = "#f8fafc";
+
+  document.querySelectorAll(".cell").forEach((c) => {
+    c.style.background = "#edf2f7";
+  });
+
+  theme.textContent = "Dark"; 
+}
+
+theme.addEventListener("click", () => {
+  modecol = !modecol; 
+  
+  if (modecol) {
+    dark();  
+  } else {
+    light(); 
+  }
+});
