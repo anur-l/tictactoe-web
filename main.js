@@ -53,7 +53,7 @@ function winneris(winner) {
   pause = true;
 
   winner.forEach((index) => {
-    cell[index].style.backgroundColor = "green";
+    cell[index].style.backgroundColor = "gold";
   });
 }
 
@@ -112,8 +112,10 @@ function dark() {
   document.querySelector(".picking").style.color = "#cbd5e0";
   document.querySelector(".board").style.background = "transparent";
 
-  document.querySelectorAll(".cell").forEach((c) => {
-    c.style.background = "#4a5568";
+   document.querySelectorAll(".cell").forEach((c) => {
+    if (c.style.backgroundColor !== "gold") {
+      c.style.background = "#4a5568";
+    }
   });
 
   theme.textContent = "Light";
@@ -128,8 +130,11 @@ function light() {
   document.querySelector(".board").style.background = "#f8fafc";
 
   document.querySelectorAll(".cell").forEach((c) => {
-    c.style.background = "#edf2f7";
+    if (c.style.backgroundColor !== "gold") {
+      c.style.background = "#edf2f7";
+    }
   });
+  
 
   theme.textContent = "Dark";
 }
