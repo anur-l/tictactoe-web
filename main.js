@@ -3,7 +3,7 @@ const playero = document.querySelector("#oplayer");
 const htitel = document.querySelector(".picking");
 const theme = document.querySelector(".mode");
 const cell = document.querySelectorAll(".cell");
-const restart = document.querySelector(".restart")
+const restart = document.querySelector(".restart");
 let modecol = false;
 let player = "X";
 let pause = false;
@@ -53,7 +53,7 @@ function winneris(winner) {
   pause = true;
 
   winner.forEach((index) => {
-    cell[index].style.backgroundColor = "gold";
+    cell[index].style.backgroundColor = "green";
   });
 }
 
@@ -76,6 +76,11 @@ restart.addEventListener("click", function() {
     c.textContent = "";
     c.classList.remove("x", "o");
     c.style.backgroundColor = "";
+    if (modecol == false) {
+      light();
+    } else {
+      dark();
+    }
   });
 
   pause = false;
@@ -99,7 +104,7 @@ playero.addEventListener("click", () => {
   }
 });
 
-function dark() {  
+function dark() {
   document.body.style.background = "#1a202c";
   document.body.style.color = "white";
   document.querySelector(".box").style.background = "#2d3748";
@@ -111,10 +116,10 @@ function dark() {
     c.style.background = "#4a5568";
   });
 
-  theme.textContent = "Light"; 
+  theme.textContent = "Light";
 }
 
-function light() { 
+function light() {
   document.body.style.background = "#e1faf1";
   document.body.style.color = "#2d3748";
   document.querySelector(".box").style.background = "white";
@@ -126,15 +131,14 @@ function light() {
     c.style.background = "#edf2f7";
   });
 
-  theme.textContent = "Dark"; 
+  theme.textContent = "Dark";
 }
 
 theme.addEventListener("click", () => {
-  modecol = !modecol; 
-  
+  modecol = !modecol;
   if (modecol) {
-    dark();  
+    dark();
   } else {
-    light(); 
+    light();
   }
 });
